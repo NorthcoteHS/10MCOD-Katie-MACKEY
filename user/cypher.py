@@ -12,8 +12,7 @@ def inputNumber(message):
 #chose if encoding or decoding
 mode = inputNumber("Select: 1-encode 2-decode ")
 if mode == 1:
-    print("Please use , instead of '")
-    #orginal message
+    #original message
     code = input("Enter message: ")
     #how much it's shifted by
     offset = int(input("Enter offset: "))
@@ -44,7 +43,6 @@ if mode == 1:
     final = "".join(shift2)
     print(final)
 else:
-    print("Please use , instead of '")
     code = input("Enter message: ")
     offset = int(input("Enter offset: "))
     code = code.upper()
@@ -57,14 +55,12 @@ else:
         if i <= 64:
             shift.append(i)
         else:
+          #a slightly different method to make it wrap around because punctuation
+          if i - offset <=64:
+            shift.append(i - offset + 26)
+          else:
             shift.append(i - offset)
     for s in shift:
-        if s < 65 and s != 32:
-            s = s + 26
         shift2.append(chr(s))
     final = "".join(shift2)
-    print(code)
-    print(code2)
-    print(shift)
-    print(shift2)
     print(final)
