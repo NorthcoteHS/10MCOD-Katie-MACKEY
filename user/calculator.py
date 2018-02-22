@@ -1,3 +1,7 @@
+'''
+Name: Katie Mackey
+Desc: Calculator that has the option have show division with a remainder or as a decimal
+'''
 #making sure the user puts in an integer
 def inputNumber(message):
   while True:

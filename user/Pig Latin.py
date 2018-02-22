@@ -1,4 +1,8 @@
-#eg. Pig Latin is = igPay atinLay isay
+'''
+Name: Katie Mackey
+Desc: Pig latin generator, eg. Pig Latin is = igPay atinLay isay
+Note: this code cannot handle punctuation in a sentence. I don't think I can do that.
+'''
 p = input("Translate: ")
 #list version of p
 pl = p.split()
@@ -21,7 +25,8 @@ while a < len(pl):
         else:
             t.append(pl[a][2:]+pl[a][:2]+"ay ")
     a+= 1
+#glues it all together
 final = "".join(t)
 print(final)
 
-#Note: this code cannot handle punctuation in a sentence. I don't think I can do that.
+

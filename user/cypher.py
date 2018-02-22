@@ -1,3 +1,7 @@
+'''
+Name: Katie Mackey
+Desc: Caesar cypher encoder and decoder, where the user sets the offset. Ignores punctuation and spaces (and numbers).
+'''
 #integer checker I may or may not have stolen from the internet
 def inputNumber(message):
   while True:
@@ -43,6 +47,7 @@ if mode == 1:
     final = "".join(shift2)
     print(final)
 else:
+  #same as when encoding
     code = input("Enter message: ")
     offset = int(input("Enter offset: "))
     code = code.upper()

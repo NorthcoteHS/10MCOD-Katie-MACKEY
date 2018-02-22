@@ -1,3 +1,9 @@
+'''
+Name: Katie Mackey
+Desc: Vinegere cipher encoder and decoder. Will loop until the user inputs nothing and hits enter
+Note(s): cannot handle spaces or punctuation, outputs code as all lowercase
+'''
+
 al = 'abcdefghijklmnopqrstuvwxyz'
 m = input("Select: 1 - Encode or 2 - Decode ")
 while m != "":
