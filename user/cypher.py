@@ -4,15 +4,15 @@ Desc: Caesar cypher encoder and decoder, where the user sets the offset. Ignores
 '''
 #integer checker I may or may not have stolen from the internet
 def inputNumber(message):
-  while True:
-    try:
-       userInput = int(input(message))       
-    except ValueError:
-       print("Not an option! Try again.")
-       continue
-    else:
-       return int(userInput) 
-       break
+    while True:
+        try:
+            userInput = int(input(message))
+        except ValueError:
+            print("Not an option! Try again.")
+            continue
+        else:
+            return int(userInput)
+        break
 #chose if encoding or decoding
 mode = inputNumber("Select: 1-encode 2-decode ")
 if mode == 1:
@@ -61,10 +61,10 @@ else:
             shift.append(i)
         else:
           #a slightly different method to make it wrap around because punctuation
-          if i - offset <=64:
-            shift.append(i - offset + 26)
-          else:
-            shift.append(i - offset)
+            if i - offset <=64:
+                shift.append(i - offset + 26)
+            else:
+                shift.append(i - offset)
     for s in shift:
         shift2.append(chr(s))
     final = "".join(shift2)
