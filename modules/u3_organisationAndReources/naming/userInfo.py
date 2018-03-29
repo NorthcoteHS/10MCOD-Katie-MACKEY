@@ -1,7 +1,7 @@
 """
 Prog:   userInfo.py
-Name:   Student Name
-Date:   12/03/18
+Name:   Katie Mackey
+Date:   2018-03-12
 Desc:   Asks the user for their name, address, etc. This code has poorly named variables - please fix me!
 """
 
@@ -9,8 +9,8 @@ Desc:   Asks the user for their name, address, etc. This code has poorly named v
 print('Welcome to the User Information Booth! Please enter your info.')
 
 # Get user's name.
-name = input('First Name: ')
-name2 = input('Last Name: ')
+firstName = input('First Name: ')
+lastName = input('Last Name: ')
 
 # Get user's birth date.
 dob = input('Birth Year: ')
