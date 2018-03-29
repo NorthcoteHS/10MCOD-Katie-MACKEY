@@ -1,4 +1,5 @@
 '''
+Prog: 8Ball.py
 Name: Katie Mackey
 Desc: simulates a magic 8Ball using random integers
 '''
