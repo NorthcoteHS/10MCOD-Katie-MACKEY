@@ -4,7 +4,7 @@ Name: Katie Mackey
 Date: 2018-03-29
 Desc: Calculates and returns the area and perimeter of a circle from the radius
 '''
-#welcome mess
+#welcome message
 print('Welcome to the Circle Calculator!')
 
 #get radius from user
