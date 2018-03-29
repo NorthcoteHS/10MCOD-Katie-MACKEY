@@ -1,7 +1,7 @@
 """
 Prog:   rectCalc.py
 Name:   Katie Mackey
-Date:   2018-03-12
+Date:   2018-03-29
 Desc:   Calculates the area and perimeter of a rectangle.
 """
 

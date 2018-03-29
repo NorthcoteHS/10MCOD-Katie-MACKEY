@@ -1,7 +1,7 @@
 """
 Prog:   userInfo.py
 Name:   Katie Mackey
-Date:   2018-03-12
+Date:   2018-03-29
 Desc:   Asks the user for their name, address, etc. This code has poorly named variables - please fix me!
 """
 
