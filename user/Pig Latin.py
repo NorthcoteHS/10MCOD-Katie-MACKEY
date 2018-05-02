@@ -28,5 +28,3 @@ while a < len(pl):
 #glues it all together
 final = "".join(t)
 print(final)
-
-
