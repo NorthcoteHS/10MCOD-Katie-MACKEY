@@ -30,6 +30,7 @@ secret = {
 def ask(subject,q):
     global score
     a = input(q).lower()
+    a = a.strip()
     if subject[q] in a:
         print("Correct!")
         score += 1
@@ -37,6 +38,7 @@ def ask(subject,q):
         print("Incorrect, the answer was", subject[q])
 
 def create():
+    global subjects
     s = input("Please enter the name of the subject: ").lower()
     #check if subject already exists
     if s in subjects:
@@ -47,10 +49,11 @@ def create():
             s[q]=a
             q = input("Please enter your question: ")
     else:
+        subjects.append(s)
         print("To finish entering questions hit enter when prompted for your question.")
-        q = input("Please enter your question: ")
+        q = input("Please enter your question: ")+" "
         while q:
-            a = input("Please enter the answer: ")
+            a = input("Please enter the answer: ").lower()
             s = dict()
             s[q] = a
             q = input("Please enter your question: ")
@@ -84,3 +87,4 @@ while x:
             create()
         else:
             x = input("What subject would you like to revise? ")
+    x = input("What subject would you like to revise? ")
