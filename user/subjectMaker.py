@@ -6,6 +6,7 @@ Desc:   add a subject with questions to studyBuddy.py
 '''
 subjects = ["maths","science","history","history"]
 def create():
+    global subjects
     s = input("Please enter the name of the subject: ").lower()
     #check if subject already exists
     if s in subjects:
@@ -16,10 +17,11 @@ def create():
             s[q]=a
             q = input("Please enter your question: ")
     else:
+        subjects.append(s)
         print("To finish entering questions hit enter when prompted for your question.")
-        q = input("Please enter your question: ")
+        q = input("Please enter your question: ")+" "
         while q:
-            a = input("Please enter the answer: ")
+            a = input("Please enter the answer: ").lower()
             s = dict()
             s[q] = a
             q = input("Please enter your question: ")
