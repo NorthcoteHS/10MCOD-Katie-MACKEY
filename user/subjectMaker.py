@@ -22,8 +22,8 @@ def create():
         q = input("Please enter your question: ")+" "
         while q:
             a = input("Please enter the answer: ").lower()
-            s = dict()
-            s[q] = a
+            globals()[s] = dict()
+            globals()[s][q] = a
             q = input("Please enter your question: ")
 #BEGIN
 p = input("Would you like to add a question? ")
