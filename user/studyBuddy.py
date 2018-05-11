@@ -28,7 +28,7 @@ history = {
     "Did dinosaurs exist? ":"yes",
     "What was the famous wooden animal used to infiltrate Troy? ":"horse",
     "In what year was Jesus born?":"0bc",
-    "When did WW1 end? ":"11 november 1980"
+    "When did WW1 end? ":"11 november 1918"
 }
 secret = {
     "What is Suga's real name? ":"min yoongi",
