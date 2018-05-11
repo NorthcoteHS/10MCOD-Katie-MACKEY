@@ -10,7 +10,7 @@ import random
 #score counter
 score = 0
 #list of subjects
-subjects = ["maths","science","history","secret"]
+subjects = ["secret","maths","science","history"]
 #questions
 maths = {
     "A histogram is used to display what kind of data? ":"numerical",
@@ -31,10 +31,7 @@ history = {
     "When did WW1 end? ":"11 november 1918"
 }
 secret = {
-    "What is Suga's real name? ":"min yoongi",
-    "How many members are in Seventeen? ":"13",
-    "Who is the main dancer in NCT? ":"ten",
-    "Who is the youngest member of NCT Dream? ":"jisung park"
+    "have a point ":""
 }
 #function to ask the user the question, input for subject and q from for loop
 def ask(subject,q):
@@ -68,6 +65,7 @@ def create():
             #add to dictionary
             s[q]=a
             q = input("Please enter your question: ")
+        print("\n")
     else:
         #add to list of subjects
         subjects.append(s)
@@ -81,17 +79,22 @@ def create():
             #add question to dictionary
             globals()[s][q] = a
             q = input("Please enter your question: ")
+        print("\n")
+#intro
+print("-"*20+"\n\nWelcome to studyBuddy!\n\n"+"-"*20)
+print("Subjects available: ", ", ".join(subjects[1:]))
 #ask what subject
 x = input("What subject would you like to revise? ")
 #loop loop motherfuckers
 while x:
     #check if subject exists
     if x in subjects:
+        print(x,"selected.\n")
         #cycle through questions
         for q in eval(x):
             ask(x,q)
         #print score out of total and percentage
-        print("Your final score was", score,"out of", len(eval(x)), "or", str(score/len(eval(x))*100)+"%")
+        print("\nYour final score was", score,"out of", len(eval(x)), "or", str(score/len(eval(x))*100)+"%")
         #reset score
         score = 0
     else:
@@ -103,6 +106,8 @@ while x:
             create()
         else:
             #keep tha loop going (or let it stop at some point)
+            print("Subjects available: ", ", ".join(subjects[1:]))
             x = input("What subject would you like to revise? ")
     #pls don't loop to infinity my bro
+    print("Subjects available: ", ", ".join(subjects[1:]))
     x = input("What subject would you like to revise? ")
