@@ -6,9 +6,10 @@ Desc:   FLASHCARDS
 To-do:
 randomise question order
 '''
-import random
 #score counter
 score = 0
+#create scoreboard
+scoreboard = open('scoreboard.txt', 'a')
 #list of subjects
 subjects = ["secret","maths","science","history"]
 #questions
@@ -27,7 +28,7 @@ science = {
 history = {
     "Did dinosaurs exist? ":"yes",
     "What was the famous wooden animal used to infiltrate Troy? ":"horse",
-    "In what year was Jesus born?":"0bc",
+    "In what year was Jesus born? ":"0bc",
     "When did WW1 end? ":"11 november 1918"
 }
 secret = {
@@ -46,6 +47,7 @@ def ask(subject,q):
         print("Correct!")
         score += 1
     else:
+        #print correct answer
         print("Incorrect, the answer was", eval(subject)[q])
 #function to create questions, adding to subjects if it already exists or creating a new subject.
 def create():
@@ -80,12 +82,20 @@ def create():
             globals()[s][q] = a
             q = input("Please enter your question: ")
         print("\n")
+#score function
+def scoreBoard():
+    #save and reset score
+        scoreboard.write(str(x))
+        scoreboard.write(" : ")
+        scoreboard.write(str(score/len(eval(x))*100))
+        scoreboard.write("%\n")
+        score = 0
 #intro
 print("-"*20+"\n\nWelcome to studyBuddy!\n\n"+"-"*20)
 print("Subjects available: ", ", ".join(subjects[1:]))
 #ask what subject
 x = input("What subject would you like to revise? ")
-#loop loop motherfuckers
+#loop loop
 while x:
     #check if subject exists
     if x in subjects:
@@ -95,19 +105,19 @@ while x:
             ask(x,q)
         #print score out of total and percentage
         print("\nYour final score was", score,"out of", len(eval(x)), "or", str(score/len(eval(x))*100)+"%")
-        #reset score
-        score = 0
+        scoreBoard()
     else:
-        #my deepest apologies sire.
+        #'error' message
         print("Sorry, we don't have any questions for that subject.")
-        #would you like to fix it sire?
-        p = input("Would you like to add a question? ")
+        #option to add question
+        p = input("Would you like to add a subject or question? ")
         if p == "yes" or p == "y":
             create()
         else:
-            #keep tha loop going (or let it stop at some point)
+            #keep the loop going (or let it stop at some point)
             print("Subjects available: ", ", ".join(subjects[1:]))
             x = input("What subject would you like to revise? ")
-    #pls don't loop to infinity my bro
+    #reset the loop
     print("Subjects available: ", ", ".join(subjects[1:]))
     x = input("What subject would you like to revise? ")
+scoreboard.close()
