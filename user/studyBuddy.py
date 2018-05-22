@@ -6,6 +6,7 @@ Desc:   FLASHCARDS
 To-do:
 randomise question order
 '''
+import datetime
 #score counter
 score = 0
 #create scoreboard
@@ -84,12 +85,14 @@ def create():
         print("\n")
 #score function
 def scoreBoard():
+    global score
     #save and reset score
-        scoreboard.write(str(x))
-        scoreboard.write(" : ")
-        scoreboard.write(str(score/len(eval(x))*100))
-        scoreboard.write("%\n")
-        score = 0
+    scoreboard.write(str(datetime.date.today()))
+    scoreboard.write(" - ")
+    scoreboard.write(str(x))
+    scoreboard.write(" : ")
+    scoreboard.write(str(score/len(eval(x))*100))
+    scoreboard.write("%\n")
 #intro
 print("-"*20+"\n\nWelcome to studyBuddy!\n\n"+"-"*20)
 print("Subjects available: ", ", ".join(subjects[1:]))
@@ -106,6 +109,7 @@ while x:
         #print score out of total and percentage
         print("\nYour final score was", score,"out of", len(eval(x)), "or", str(score/len(eval(x))*100)+"%")
         scoreBoard()
+        score = 0
     else:
         #'error' message
         print("Sorry, we don't have any questions for that subject.")
