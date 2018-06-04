@@ -48,12 +48,23 @@ def replace(product, category, newData):
     with open("database.csv", "w") as outputfile:
         outputfile.write(data)
 
+'''def delete(product):
+    with open('database.csv','r') as f:
+        dic = csv.DictReader(f)
+        data = f.read()
+        for row,line in zip(dic,data):
+            if str(product) in row['name']:
+                data = data.replace(str(row), "")
+    with open("database.csv", "w") as outputfile:
+        outputfile.write(data)
+    print("Product Deleted.")'''
+
 #START BITCH
-mode = input("What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n")
+mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\nEnter 'help' for help.""")
 while mode:
     if mode == "1":
         add(input("What is the name of the product? "))
-        mode = input("What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n")
+        mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n""")
     elif mode == "2":
         a = input("What would you like to search by? ")
         while a:
@@ -65,20 +76,25 @@ while mode:
             else:
                 print("That is not a valid category, please try again.")
                 a = input("What would you like to search by? ")
-        mode = input("What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n")
+        mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n""")
     elif mode == "3":
         product = input("What product would you like to change? ")
         category = input("What detail would you like to change? ")
         newData = input("What would you like to change it to? ")
         replace(product, category, newData)
         print("Product changed")
-        mode = input("What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n")
+        mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n""")
+    elif mode == "4":
+        '''product = input("What product would you like to delete? ")
+        delete(product)'''
+        print("sorry I can't get this to work.")
+        mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n""")
     elif mode == "help":
         print("Welcome to organiseThing, supposedly used to store and review details on different skincare products.")
         print("Available categories to search by:")
-        print(" brand\n name\n price\n type\n concern\n rating\n status")
-        print("editing and deleting products is currently unavailable, because CSV files are a pain in the ass. Sorry.\nYou can go into the database file manually if you really want, just don't move any commas around.\n\n")
-        mode = input("What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n")
+        print(" - brand\n - name\n - price\n - type\n - concern\n - rating\n - status")
+        print("deleting products is currently unavailable, because CSV files are a pain in the ass. Sorry.\nYou can go into the database file manually if you really want, just don't move any commas around.\n\n")
+        mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n""")
     else:
         print("\aSorry! That's not an option, try again.")
-        mode = input("What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n")
+        mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n""")
