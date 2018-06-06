@@ -18,8 +18,9 @@ def display(row):
     print("Rating:",row['rating'])
     print("Status:",row['status'])
     print('\n')
-#find a product or multiple products in database by category
-def find(category,query):
+
+#find and display a product or multiple products in database by category
+def findShow(category,query):
     #counter in case product cannot be found
     i = 0
     with open('database.csv', 'r') as f:
@@ -32,6 +33,20 @@ def find(category,query):
                 i += 1
         if i == 0:
             print("Product not in database. Try again\n")
+
+def find(category,query):
+    #counter in case product cannot be found
+    i = 0
+    with open('database.csv', 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            #check if product in user given category for each row
+            if str(query).lower() in row[str(category)].lower():
+                #add to counter to day you found something
+                i += 1
+                return(True)
+        if i == 0:
+            return(False)
 
 def add(product):
     with open('database.csv', 'a') as f:
@@ -77,11 +92,18 @@ def delete(product):
         outputfile.write("".join(data))
     print("Product Deleted.")
 
-#START BITCH
+#~ S T A R T ~
+print("Welcome to organiseThing, supposedly used to store and review details on different skincare products.")
 mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n4 - Delete a product\nEnter 'help' for help.\n""")
 while mode:
+    #add mode
     if mode == "1" or mode == 'add':
-        add(input("What is the name of the product? "))
+        product = input("What is the name of the product? ")
+        #check if product already exists
+        if find('name',str(product)) == True:
+            print("That product already exists, please use the edit function")
+        else:
+            add(product)
         mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n4 - Delete a product\n""")
     elif mode == "2" or mode == 'find':
         a = input("What would you like to search by? ")
@@ -89,7 +111,13 @@ while mode:
             if a in "brand,name,price,type,concern,rating,status":
                 print("Searching by", a)
                 b = input("What would you like to search? ")
-                find(a,str(b))
+                if b == 'all':
+                    with open('database.csv', 'r') as f:
+                        reader = csv.DictReader(f)
+                        for row in reader:
+                            display(row)
+                else:
+                    findShow(a,str(b))
                 a = input("What would you like to search by? ")
             else:
                 print("That is not a valid category, please try again.")
@@ -97,13 +125,19 @@ while mode:
         mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n4 - Delete a product\n""")
     elif mode == "3" or mode == 'edit':
         product = input("What product would you like to change? ")
-        category = input("What detail would you like to change? ")
-        newData = input("What would you like to change it to? ")
-        replace(product, category, newData)
+        if find('name',str(product)) == False:
+            print("Product does not exist.")
+        else:
+            category = input("What detail would you like to change? ")
+            newData = input("What would you like to change it to? ")
+            replace(product, category, newData)
         mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n4 - Delete a product\n""")
     elif mode == "4" or mode == 'delete':
         product = input("What product would you like to delete? ")
-        delete(product)
+        if find('name',str(product)) == False:
+            print('product does not exist')
+        else:
+            delete(product)
         mode = input("""What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n4 - Delete a product\n""")
     elif mode == "help":
         print("Welcome to organiseThing, supposedly used to store and review details on different skincare products.")
