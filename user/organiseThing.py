@@ -3,8 +3,6 @@ Prog:   organiseThing.py
 Name:   Katie Mackey
 Date:   2018-05-31
 Desc:   organise skincare products. hopefully.
-
-mode = input(intro)
 '''
 import csv
 #F U N C T I O N S
