@@ -45,15 +45,42 @@ def find(category,query,show):
         else:
             print("Product not in database. Try again\n")
 
+def rating(query):
+#counter in case product cannot be found
+    i = 0
+    with open('database.csv', 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            #check if product in user given category for each row
+            if str(query).lower() == row['rating'].lower():
+                #add to counter to day you found something
+                i += 1
+                display(row)
+        if i == 0:
+            print("Product not in database. Try again\n")
+
 def add(product):
     with open('database.csv', 'a') as f:
         #get data from user
         brand = ask("Brand: ")
+        #all these if statements are so the user can bail at any time.
+        if brand == "cancel":
+            pass
         price = ask("Price: ")
+        if price == "cancel":
+            pass
         type = ask("Type of product: ")
+        if type == "cancel":
+            pass
         concern = ask("Concern: ")
+        if concern == "cancel":
+            pass
         rating = ask("Rating: ")
+        if rating == "cancel":
+            pass
         status = ask("Status: ")
+        if status == "cancel":
+            pass
         #add to database file.
         f.write(brand+","+product+","+price+","+type+","+concern+","+rating+","+status+"\n")
     #feedback for user (note: doesn't actually confirm if it worked. entirely superficial.)
@@ -121,6 +148,8 @@ while mode:
                         reader = csv.DictReader(f)
                         for row in reader:
                             display(row)
+                elif a == 'rating':
+                    rating(b)
                 else:
                     find(a,str(b),'yes')
                 a = input("What would you like to search by? ")
