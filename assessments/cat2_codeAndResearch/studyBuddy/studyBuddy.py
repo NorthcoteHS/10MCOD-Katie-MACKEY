@@ -29,7 +29,7 @@ science = {
 history = {
     "Did dinosaurs exist? ":"yes",
     "What was the famous wooden animal used to infiltrate Troy? ":"horse",
-    "In what year was Jesus born? ":"0bc",
+    "In what year was Jesus born? ":"0",
     "When did WW1 end? ":"11 november 1918"
 }
 secret = {
@@ -117,10 +117,6 @@ while x:
         p = input("Would you like to add a subject or question? ")
         if p == "yes" or p == "y":
             create()
-        else:
-            #keep the loop going (or let it stop at some point)
-            print("Subjects available: ", ", ".join(subjects[1:]))
-            x = input("What subject would you like to revise? ")
     #reset the loop
     print("Subjects available: ", ", ".join(subjects[1:]))
     x = input("What subject would you like to revise? ")

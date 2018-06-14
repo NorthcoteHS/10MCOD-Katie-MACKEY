@@ -43,7 +43,8 @@ def find(category,query,show):
             if i == 0:
                 return(False)
         else:
-            print("Product not in database. Try again\n")
+            if i == 0:
+                print("Product not in database. Try again\n")
 
 def rating(query):
 #counter in case product cannot be found
@@ -123,7 +124,7 @@ def delete(product):
 #welcome
 print("Welcome to organiseThing, supposedly used to store and review details on different skincare products.")
 intro = "What would you like to do:\n1 - Add a product\n2 - Find a product\n3 - Edit a product\n4 - Delete a product\n"
-mode = input(intro+"Enter 'help' for help.\n")
+mode = input(intro+"Enter 'help' for help. <-- DO THIS IT'S USEFUL\n")
 while mode:
     #add mode
     if mode == "1" or mode == 'add':
@@ -186,7 +187,7 @@ while mode:
     elif mode == "help":
         print("~Welcome to organiseThing, supposedly used to store and review details on different skincare products.~")
         print("Available categories to search by:")
-        print(" - brand\n - name\n - price\n - type\n - concern\n - rating\n - status\n")
+        print(" - brand\n - name\n - price\n - type (eg. cleanser, toner, moisturiser)\n - concern (What it is supposed to help with eg. acne, redness)\n - rating\n - status (eg. own, running low, sample)\n")
         print("When adding, deleting or editing a product, type cancel if you change your mind. Otherwise entering nothing will exit the part of the program you're in, with entering nothing on the main menu closing the program.\n")
         mode = input(intro)
     else:
